@@ -1,0 +1,24 @@
+name: 'Deploy a Portainer stack'
+description: 'Github Action to deploy a stack to a Portainer instance'
+author: 'Carl Rygart <carlrygart>'
+branding:
+  icon: 'cloud'
+  color: 'blue'
+
+inputs:
+  portainer-host:
+    required: true
+    description: 'Portainer host, eg. https://myportainer.instance.com'
+  stack-name:
+    required: true
+    description: 'Name for the Portainer stack'
+  stack-definition:
+    required: true
+    description: 'The path to the docker-compose stack stack definition file, eg. stack-definition.yml'
+  template-variables:
+    required: false
+    description: 'If given, these variables will be replaced in docker-compose file by handlebars'
+
+runs:
+  using: 'node20'
+  main: 'src/index.mjs'
