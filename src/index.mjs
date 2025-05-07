@@ -4,8 +4,8 @@ import { loadStackFile } from './load-stack-file.mjs';
 import { replaceTemplateVariables } from './replace-template-variables.mjs';
 import { deploy } from './deploy.mjs';
 
-async function processStackFile({ stackFilePath, templateVariables }) {
-  if (!stackFilePath) {
+async function processStackFile({ stackDefinitionFile, templateVariables }) {
+  if (!stackDefinitionFile) {
     console.error('Erro: parâmetro --stack-file é obrigatório');
     process.exit(1);
   }

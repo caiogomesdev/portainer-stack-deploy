@@ -45602,8 +45602,8 @@ const deploy = async ({ host, apiKey, stackName, stackFile }) => {
 
 
 
-async function processStackFile({ stackFilePath, templateVariables }) {
-  if (!stackFilePath) {
+async function processStackFile({ stackDefinitionFile, templateVariables }) {
+  if (!stackDefinitionFile) {
     console.error('Erro: parâmetro --stack-file é obrigatório');
     process.exit(1);
   }
