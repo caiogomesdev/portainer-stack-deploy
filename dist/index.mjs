@@ -40413,7 +40413,8 @@ function replaceTemplateVariables(
     stackDefinitionFile
   );
   core.info(`Reading stack definition file from ${stackDefFilePath}`);
-  let stackDefinition = external_fs_.readFileSync(stackDefFilePath);
+  let stackDefinition = external_fs_.readFileSync(stackDefFilePath, 'utf8');
+
   if (!stackDefinition) {
     throw new Error(
       `Could not find stack-definition file: ${stackDefFilePath}`
@@ -45611,7 +45612,9 @@ const run = async () => {
   });
   const stackFile = await processStackFile({
     stackDefinitionFile,
-    templateVariables,
+    templateVariables: templateVariables
+      ? JSON.parse(templateVariables)
+      : undefined,
   });
   const result = await deploy({
     host: portainerHost,

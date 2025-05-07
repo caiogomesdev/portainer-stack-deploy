@@ -17,7 +17,8 @@ export function replaceTemplateVariables(
     stackDefinitionFile
   );
   core.info(`Reading stack definition file from ${stackDefFilePath}`);
-  let stackDefinition = fs.readFileSync(stackDefFilePath);
+  let stackDefinition = fs.readFileSync(stackDefFilePath, 'utf8');
+
   if (!stackDefinition) {
     throw new Error(
       `Could not find stack-definition file: ${stackDefFilePath}`

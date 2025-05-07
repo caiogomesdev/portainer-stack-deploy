@@ -40,7 +40,9 @@ export const run = async () => {
   });
   const stackFile = await processStackFile({
     stackDefinitionFile,
-    templateVariables,
+    templateVariables: templateVariables
+      ? JSON.parse(templateVariables)
+      : undefined,
   });
   const result = await deploy({
     host: portainerHost,
