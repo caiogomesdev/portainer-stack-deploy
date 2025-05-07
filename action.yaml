@@ -9,6 +9,9 @@ inputs:
   portainer-host:
     required: true
     description: 'Portainer host, eg. https://myportainer.instance.com'
+  portainer-api-key:
+    required: true
+    description: 'Access: https://myportainer.instance.com/#!/account and create new Access tokens'
   stack-name:
     required: true
     description: 'Name for the Portainer stack'
