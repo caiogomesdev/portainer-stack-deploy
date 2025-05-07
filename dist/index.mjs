@@ -40426,6 +40426,8 @@ function replaceTemplateVariables(
     stackDefinition = lib.compile(stackDefinition)(templateVariables);
   }
   core.info(`No new image provided. Will use image in stack definition.`);
+  core.info(templateVariables);
+  core.info(stackDefinition);
   return stackDefinition;
 }
 
