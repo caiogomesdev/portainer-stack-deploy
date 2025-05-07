@@ -1,6 +1,5 @@
 // import 'dotenv/config';
 import * as core from '@actions/core';
-import { loadStackFile } from './load-stack-file.mjs';
 import { replaceTemplateVariables } from './replace-template-variables.mjs';
 import { deploy } from './deploy.mjs';
 
@@ -40,7 +39,7 @@ export const run = async () => {
     required: false,
   });
   const stackFile = await processStackFile({
-    stackFilePath: stackDefinitionFile,
+    stackDefinitionFile,
     templateVariables,
   });
   const result = await deploy({

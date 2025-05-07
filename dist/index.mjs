@@ -40387,42 +40387,12 @@ __nccwpck_require__.d(common_utils_namespaceObject, {
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var lib_core = __nccwpck_require__(7484);
+// EXTERNAL MODULE: ./node_modules/handlebars/lib/index.js
+var lib = __nccwpck_require__(8508);
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(6928);
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(9896);
-;// CONCATENATED MODULE: ./src/load-stack-file.mjs
-
-
-
-/**
- * Carrega o conteúdo do arquivo de stack
- * @param {string} stackFilePath - Caminho para o arquivo de stack
- * @returns {string} - Conteúdo do arquivo
- */
-function loadStackFile(stackFilePath) {
-  // Resolver caminho absoluto do arquivo
-  const resolvedPath = path.isAbsolute(stackFilePath)
-    ? stackFilePath
-    : path.resolve(process.cwd(), stackFilePath);
-
-  try {
-    // Verificar se o arquivo existe
-    if (!fs.existsSync(resolvedPath)) {
-      throw new Error(`Arquivo não encontrado: ${resolvedPath}`);
-    }
-
-    // Ler conteúdo do arquivo
-    const content = fs.readFileSync(resolvedPath, 'utf-8');
-    return content;
-  } catch (error) {
-    console.error('Erro ao carregar arquivo:', error.message);
-    process.exit(1);
-  }
-}
-
-// EXTERNAL MODULE: ./node_modules/handlebars/lib/index.js
-var lib = __nccwpck_require__(8508);
 ;// CONCATENATED MODULE: ./src/replace-template-variables.mjs
 
 
@@ -45601,7 +45571,6 @@ const deploy = async ({ host, apiKey, stackName, stackFile }) => {
 
 
 
-
 async function processStackFile({ stackDefinitionFile, templateVariables }) {
   if (!stackDefinitionFile) {
     console.error('Erro: parâmetro --stack-file é obrigatório');
@@ -45638,7 +45607,7 @@ const run = async () => {
     required: false,
   });
   const stackFile = await processStackFile({
-    stackFilePath: stackDefinitionFile,
+    stackDefinitionFile,
     templateVariables,
   });
   const result = await deploy({
