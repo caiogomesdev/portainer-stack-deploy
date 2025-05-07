@@ -1,6 +1,5 @@
 // import 'dotenv/config';
 import * as core from '@actions/core';
-import { parseArguments } from './parse-arguments.mjs';
 import { loadStackFile } from './load-stack-file.mjs';
 import { replaceTemplateVariables } from './replace-template-variables.mjs';
 import { deploy } from './deploy.mjs';
@@ -16,11 +15,8 @@ async function processStackFile({ stackFilePath, templateVariables }) {
       'Aviso: nenhuma variável de template (--template-vars) especificada'
     );
   }
-
-  const originalContent = loadStackFile(stackFilePath);
-
   const processedContent = replaceTemplateVariables(
-    originalContent,
+    stackDefinitionFile,
     templateVariables
   );
 
