@@ -1,3 +1,4 @@
+import * as core from '@actions/core';
 import Handlebars from 'handlebars';
 import path from 'path';
 import fs from 'fs';

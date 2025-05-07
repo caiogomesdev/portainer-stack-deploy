@@ -40386,7 +40386,7 @@ __nccwpck_require__.d(common_utils_namespaceObject, {
 });
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
-var lib_core = __nccwpck_require__(7484);
+var core = __nccwpck_require__(7484);
 // EXTERNAL MODULE: ./node_modules/handlebars/lib/index.js
 var lib = __nccwpck_require__(8508);
 // EXTERNAL MODULE: external "path"
@@ -40394,6 +40394,7 @@ var external_path_ = __nccwpck_require__(6928);
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(9896);
 ;// CONCATENATED MODULE: ./src/replace-template-variables.mjs
+
 
 
 
@@ -45591,19 +45592,19 @@ async function processStackFile({ stackDefinitionFile, templateVariables }) {
 }
 
 const run = async () => {
-  const portainerHost = lib_core.getInput('portainer-host', {
+  const portainerHost = core.getInput('portainer-host', {
     required: true,
   });
-  const portainerApiKey = lib_core.getInput('portainer-api-key', {
+  const portainerApiKey = core.getInput('portainer-api-key', {
     required: true,
   });
-  const stackName = lib_core.getInput('stack-name', {
+  const stackName = core.getInput('stack-name', {
     required: true,
   });
-  const stackDefinitionFile = lib_core.getInput('stack-definition', {
+  const stackDefinitionFile = core.getInput('stack-definition', {
     required: true,
   });
-  const templateVariables = lib_core.getInput('template-variables', {
+  const templateVariables = core.getInput('template-variables', {
     required: false,
   });
   const stackFile = await processStackFile({
